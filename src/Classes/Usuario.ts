@@ -147,4 +147,79 @@ export class Usuario {
     get nome(): string{
         return this._nome
     }
+
+    static minhaConta (usuario: Usuario){
+        let controle = true
+        while(controle){
+            console.log ("1. Alterar dados")
+            console.log ("2. Sair")
+            let opcao = Number(prompt ("Entre com sua opção: "))
+            switch(opcao){
+                case 1: // alterar dados
+                    // chamar metodo alterar dados usuario
+                    Usuario.alteraDadosUsuario(usuario)
+                    break;
+                case 2:
+                    console.log("Saindo...")
+                    controle = false
+                    break;
+                default:
+                    console.log("Opção não reconhecida.")
+                    break;
+            }
+        }
+    }
+    static alteraDadosUsuario(usuario: Usuario){
+        let controle = true
+        while(controle){
+            console.log("1. Alterar nome")
+            console.log("2. Alterar nome de usuário")
+            console.log("3. Alterar CPF")
+            console.log("4. Alterar senha")
+            console.log("5. Sair")
+            const opcao = Number(prompt("Entre com sua opção: "))
+            switch(opcao){
+                case 1: // alterar nome
+                    const novoNome= prompt("Novo nome: ")
+                    usuario._nome = novoNome
+                    console.log("Nome alterado com sucesso.")
+                    break;
+                case 2: // alterar nome de usuário
+                    const novoUserName = prompt ("Novo nome de usuário: ")
+                    const testeUserName = this.procuraUsuarioUserName(novoUserName)
+                    if (!testeUserName){
+                        usuario._userName=novoUserName
+                        console.log("Nome de usuário alterado com sucesso.")
+                    }
+
+                    break;
+                case 3: // alterar CPF
+                    const novoCPF = prompt("Novo CPF: ")
+                    const testeCpf = this.procuraUsuarioCpf(novoCPF)
+                    if (!testeCpf){
+                        usuario._cpf=novoCPF;
+                        console.log("CPF alterado com sucesso.")
+                    }
+                    break;
+                case 4: //Alterar senha
+                    const senhaAtual = prompt("Informe a senha atual:")
+                    if (senhaAtual===usuario._senha){
+                        console.log("Senha correta!")
+                        const novaSenha = prompt("Entre com a nova senha: ")
+                        usuario._senha=novaSenha;
+                        console.log("Senha alterada com sucesso.")
+                    } else {
+                        console.log("Senha incorreta.")
+                    }
+                    break;
+                case 5: 
+                    console.log("Saindo...")
+                    controle=false
+                    break;
+                default:
+                    console.error("Opção não reconhecida.")
+                    break;
+            } 
+        }
+    }
 }

@@ -26,4 +26,8 @@ export class Locacao {
             this._livro.disponivel=false;
         }
     }
+
+    static procuraLocacaoUsuario(usuario: Usuario){
+        
+    }
 }

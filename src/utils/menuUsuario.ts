@@ -13,6 +13,7 @@ export function menuUsuario(usuario: Usuario){
         const opcao = Number(prompt("Entre com a sua opção: "))
         switch(opcao){
             case 1: // minha conta
+                Usuario.minhaConta(usuario)
                 break;
             case 2: // minhas locações
                 break;
