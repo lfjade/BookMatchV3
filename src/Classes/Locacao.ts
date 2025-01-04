@@ -27,7 +27,20 @@ export class Locacao {
         }
     }
 
-    static procuraLocacaoUsuario(usuario: Usuario){
+    exibirLocacaoUsuario(locacao: Locacao): string {
+        return `Livro: ${locacao._livro.nome}\n Data de locação: ${locacao._dataLocacao}\n ${ (this._dataDevolucao? `Devolver até: ${locacao._previsaoDevolucao}` : `Data de devolução: ${locacao._dataDevolucao}`)}`
+    }
+
+    static procuraLocacaoUsuario(usuario: Usuario){ // recebe o parâmetro Usuario
+        let locacoesUsuario = Locacao.listaLocacoes.filter((el) => el._usuario === usuario) // aqui ele cria um array de objetos Locacao que tiverem o usuário passado no parâmetro
+        locacoesUsuario.map((el) => el.exibirLocacaoUsuario) // aqui ele pega o array e pra cada objeto usa o método de exibição
         
+    }
+
+    get dataDevolucao (): Date | null{
+        return this._dataDevolucao
+    }
+    set dataDevolucao (data: Date) {
+        this._dataDevolucao=data
     }
 }

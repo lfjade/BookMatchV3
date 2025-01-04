@@ -2,7 +2,7 @@ export class Genero {
     protected _id: number
     protected _nome: string
     protected static contadorID: number=1;
-    protected static listaGeneros: Genero[]=[];
+    static listaGeneros: Genero[]=[];
 
     constructor (nome: string){
         this._id=Genero.contadorID++

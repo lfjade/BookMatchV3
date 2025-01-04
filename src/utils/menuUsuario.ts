@@ -1,6 +1,6 @@
 import { Usuario } from "../Classes/Usuario";
-import PromptSync from "prompt-sync";
 import { acervo } from "./acervo";
+import { Locacao } from "../Classes/Locacao";
 
 export function menuUsuario(usuario: Usuario){
     let controle = true;
@@ -16,6 +16,7 @@ export function menuUsuario(usuario: Usuario){
                 Usuario.minhaConta(usuario)
                 break;
             case 2: // minhas locações
+                Locacao.procuraLocacaoUsuario(usuario)
                 break;
             case 3:
                 acervo();

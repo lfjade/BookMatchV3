@@ -64,7 +64,10 @@ export class Usuario {
     }
     static procuraUsuarioUserName(userName: string): string | null {
         // Lógica: recebe um user name, procura se existe na lista; se sim, retorna a string userName; se não, retorna a string vazia e printa no console "Usuário não encontrado."
-
+        if (!userName.trim()) {
+            console.error("O nome de usuário não pode ser vazio.");
+            return null;
+        } // caso receba "" => "O nome de usuário não pode ser vazio."
         const normalizado = userName.toLowerCase().trim();
         const testeUserName = Usuario.listaUsuarios.find((el) => el._userName.toLowerCase().trim() === normalizado)
         if (testeUserName) {
@@ -87,31 +90,33 @@ export class Usuario {
     static procuraUsuario (opcao: number): string | null | void{ // método que inclui todos os métodos de pesquisa num menu
         let controle = true
 
-        switch(opcao){
-            case 1: // procuraUsuarioID
-            let id = Number(prompt("Informe o ID do Usuário: "))
-            let saida = this.procuraUsuarioID(id)
-            return saida?.toString() || null;
-            break;
-            case 2: // procuraUsuarioNome
-            let nome = prompt("Informe o nome do Usuário: ")
-            return this.procuraUsuarioNome(nome)
-            break;
-            case 3: //procuraUsuarioUsername
-            let userName = prompt ("Informe o Username: ")
-            return this.procuraUsuarioUserName(userName)
-            break;
-            case 4: // procuraUsuarioCpf
-            let cpf = prompt("Informe o CPF: ")
-            return this.procuraUsuarioCpf(cpf)
-            break;
-            case 5:
-                console.log("Saindo...")
-                controle = false;
+            while(controle){
+                switch(opcao){
+                case 1: // procuraUsuarioID
+                let id = Number(prompt("Informe o ID do Usuário: "))
+                let saida = this.procuraUsuarioID(id)
+                return saida?.toString() || null;
                 break;
-            default:
-                console.error("Opção não reconhecida.")
+                case 2: // procuraUsuarioNome
+                let nome = prompt("Informe o nome do Usuário: ")
+                return this.procuraUsuarioNome(nome)
                 break;
+                case 3: //procuraUsuarioUsername
+                let userName = prompt ("Informe o Username: ")
+                return this.procuraUsuarioUserName(userName)
+                break;
+                case 4: // procuraUsuarioCpf
+                let cpf = prompt("Informe o CPF: ")
+                return this.procuraUsuarioCpf(cpf)
+                break;
+                case 5:
+                    console.log("Saindo...")
+                    controle = false;
+                    break;
+                default:
+                    console.error("Opção não reconhecida.")
+                    break;
+            }
         }
     }
 
