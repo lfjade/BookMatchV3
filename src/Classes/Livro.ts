@@ -36,6 +36,9 @@ export class Livro {
     set nome (nome: string){
         this._nome=nome;
     }
+    get id (): number{
+        return this._id
+    }
     static exibirLivro(livro: Livro): string{
         return `ID: ${livro._id} | Nome: ${livro._nome} | Autor: ${livro._autor} | Gênero: ${livro._generos.map((el) => el.nome).join(", ")} | Editora: ${livro._editora} | Edição: ${livro._edicao}`
 

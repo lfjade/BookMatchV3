@@ -43,4 +43,5 @@ export class Locacao {
     set dataDevolucao (data: Date) {
         this._dataDevolucao=data
     }
+
 }

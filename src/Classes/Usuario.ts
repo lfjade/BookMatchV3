@@ -153,6 +153,10 @@ export class Usuario {
         return this._nome
     }
 
+    get id(): number{
+        return this._id
+    }
+
     static minhaConta (usuario: Usuario){
         let controle = true
         while(controle){
